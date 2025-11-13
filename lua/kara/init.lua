@@ -27,8 +27,8 @@ M.colors = {
 	-- Primary colors
 	red = "#E85A84",
 	red2 = "#D95555",
-	green = "#94DD8E",
-	green2 = "#8CD881",
+	green = "#A6DB95",
+	green2 = "#A6DB95",
 	blue = "#7EB7E6",
 	blue2 = "#568BB4",
 	blue3 = "#6CAEC0",
