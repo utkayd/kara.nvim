@@ -18,7 +18,7 @@
 
 ```lua
 {
-  "yourusername/kara.nvim",
+  "utkayd/kara.nvim",
   priority = 1000,
   config = function()
     require("kara").setup()
@@ -31,7 +31,7 @@
 
 ```lua
 use {
-  "yourusername/kara.nvim",
+  "utkayd/kara.nvim",
   config = function()
     require("kara").setup()
     vim.cmd("colorscheme kara")
@@ -43,7 +43,7 @@ use {
 
 1. Clone this repository into your Neovim config directory:
    ```bash
-   git clone https://github.com/yourusername/kara.nvim ~/.config/nvim/pack/plugins/start/kara.nvim
+   git clone https://github.com/utkayd/kara.nvim ~/.config/nvim/pack/plugins/start/kara.nvim
    ```
 
 2. Add to your `init.lua`:
