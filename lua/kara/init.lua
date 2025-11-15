@@ -4,25 +4,16 @@ local M = {}
 M.colors = {
 	-- Base colors
 	fg = "#DFE0EA",
-	bg = "#191B20",
+	bg = "#2b2e36",
 
 	-- Background variants
-	bg1 = "#1E2026", -- line_bg, gutter_bg
-	bg2 = "#16181D", -- dark, black
-	bg3 = "#272932", -- visual_select_bg, black1
-	bg4 = "#21252D", -- old gray
+	bg2 = "#22252a", -- dark, black
+	bg3 = "#242e42",
 
 	-- Foreground/Gray variants
-	gray1 = "#4D5264", -- comment, vsplit_bg
-	gray2 = "#495163", -- selection_fg
-	gray3 = "#515669", -- gray_punc
-	gray4 = "#555B6C", -- line_fg
-	gray5 = "#5E697E", -- selection_bg
-	gray6 = "#606978", -- non_text
-	gray7 = "#6E7380", -- old gray2
-	gray8 = "#AEAFAD", -- cursor_bg
-	gray9 = "#BBBBBB", -- accent
-	gray10 = "#CFD0D7", -- white1
+	gray1 = "#4D5264", -- darkest - comments, borders, inactive elements
+	gray2 = "#7B8394", -- medium - line numbers, delimiters, secondary text
+	gray3 = "#C6D0E0", -- lightest - active text, important UI elements
 
 	-- Primary colors
 	red = "#E85A84",
@@ -30,12 +21,12 @@ M.colors = {
 	green = "#A6DB95",
 	green2 = "#A6DB95",
 	blue = "#7EB7E6",
-	blue2 = "#568BB4",
-	blue3 = "#6CAEC0",
+	blue2 = "#6CAEC0",
 	yellow = "#EED49F",
 	orange = "#E0828D",
-	orange2 = "#E39A65",
+	orange2 = "#FB8500",
 	pink = "#D895C7",
+	purple = "#6a4c93",
 }
 
 -- Configuration options
@@ -78,15 +69,15 @@ function M.setup(opts)
 		Boolean = { fg = colors.orange, italic = config.italic_booleans == "italic" },
 
 		Character = { fg = colors.yellow },
-		ColorColumn = { bg = colors.bg3 },
+		ColorColumn = { bg = colors.bg2 },
 		Comment = { fg = colors.gray1, italic = config.italic_comments == "italic" },
 		Conceal = { fg = colors.fg },
 		Conditional = { fg = colors.pink },
 		Constant = { fg = colors.orange },
 		Cursor = { fg = colors.yellow, bg = colors.bg },
 		CursorColumn = { fg = "NONE", bg = "NONE" },
-		CursorLine = { bg = colors.bg3 },
-		CursorLineNr = { fg = colors.fg, bg = colors.bg1, bold = true },
+		CursorLine = { bg = colors.bg2 },
+		CursorLineNr = { fg = colors.yellow, bg = colors.bg2, bold = true },
 
 		Debug = { fg = colors.fg },
 		Define = { fg = colors.blue },
@@ -96,7 +87,7 @@ function M.setup(opts)
 		DiffChange = { fg = colors.green },
 		DiffDelete = { fg = colors.red },
 		DiffRemoved = { fg = colors.red },
-		DiffText = { fg = colors.gray10 },
+		DiffText = { fg = colors.gray3 },
 		DiffFile = { fg = colors.pink },
 
 		Error = { fg = colors.red2, bg = colors.bg, bold = true },
@@ -104,12 +95,12 @@ function M.setup(opts)
 		Exception = { fg = colors.fg },
 
 		Float = { fg = colors.orange },
-		FloatBorder = { fg = colors.gray7, bg = "NONE" },
-		FoldColumn = { fg = colors.gray4 },
-		Folded = { fg = colors.fg, bg = colors.bg4 },
+		FloatBorder = { fg = colors.gray2, bg = "NONE" },
+		FoldColumn = { fg = colors.gray2 },
+		Folded = { fg = colors.fg, bg = colors.bg2 },
 		Function = { fg = colors.blue },
 
-		Identifier = { fg = colors.gray10 },
+		Identifier = { fg = colors.gray3 },
 		Ignore = { fg = colors.gray3 },
 		IncSearch = { fg = colors.fg, bg = colors.gray1 },
 		Include = { fg = colors.blue, italic = config.italic_keywords == "italic" },
@@ -117,10 +108,10 @@ function M.setup(opts)
 		Keyword = { fg = colors.pink, italic = config.italic_keywords == "italic" },
 
 		Label = { fg = colors.pink },
-		LineNr = { fg = colors.gray4, bg = colors.bg1 },
+		LineNr = { fg = colors.gray2, bg = colors.bg },
 
 		Macro = { fg = colors.red, italic = config.italic_keywords == "italic" },
-		MatchParen = { fg = colors.gray10, bg = colors.bg2 },
+		MatchParen = { fg = colors.gray3, bg = colors.bg2 },
 		MatchParenCur = { underline = true },
 		MatchWord = { underline = true },
 		MatchWordCur = { underline = true },
@@ -129,16 +120,16 @@ function M.setup(opts)
 		MsgArea = { fg = colors.fg, bg = config.transparent_background and "NONE" or colors.bg },
 		MsgSeparator = { fg = colors.fg, bg = colors.bg },
 
-		NonText = { fg = colors.gray7 },
+		NonText = { fg = colors.gray2 },
 		Normal = { fg = colors.fg, bg = config.transparent_background and "NONE" or colors.bg },
 		NormalFloat = { bg = colors.bg2 },
 		NormalNC = { fg = colors.fg, bg = config.transparent_background and "NONE" or colors.bg },
 		Number = { fg = colors.orange },
 
-		Operator = { fg = colors.blue3 },
-		Pmenu = { fg = colors.gray10, bg = colors.bg2 },
-		PmenuSbar = { bg = colors.bg4 },
-		PmenuSel = { fg = colors.gray4, bg = colors.bg2 },
+		Operator = { fg = colors.blue2 },
+		Pmenu = { fg = colors.gray3, bg = colors.bg2 },
+		PmenuSbar = { bg = colors.bg2 },
+		PmenuSel = { fg = colors.gray2, bg = colors.bg2 },
 		PmenuThumb = { bg = colors.bg2 },
 		PreCondit = { fg = colors.blue },
 		PreProc = { fg = colors.blue },
@@ -149,8 +140,8 @@ function M.setup(opts)
 		Repeat = { fg = colors.pink },
 
 		Search = { fg = colors.fg, bg = colors.gray1 },
-		CurSearch = { fg = colors.bg, bg = colors.yellow },
-		SignColumn = { bg = colors.bg1 },
+		CurSearch = { fg = colors.bg, bg = colors.orange2 },
+		SignColumn = { bg = colors.bg },
 		Special = { fg = colors.gray3 },
 		SpecialChar = { fg = colors.yellow },
 		SpecialComment = { fg = colors.pink },
@@ -160,22 +151,22 @@ function M.setup(opts)
 		SpellLocal = { fg = colors.green, underline = true },
 		SpellRare = { fg = colors.pink, underline = true },
 		Statement = { fg = colors.pink },
-		StatusLine = { fg = colors.gray4, bg = colors.bg2 },
-		StatusLineNC = { fg = colors.gray4, bg = colors.bg2 },
+		StatusLine = { fg = colors.gray2, bg = "NONE" },
+		StatusLineNC = { fg = colors.gray2, bg = colors.bg2 },
 		StatusLineSeparator = { fg = colors.bg2 },
 		StatusLineTerm = { fg = colors.green, bg = colors.bg2 },
 		StatusLineTermNC = { fg = colors.gray3, bg = colors.bg2 },
 		StorageClass = { fg = colors.pink },
 		String = { fg = colors.green },
 		Structure = { fg = colors.green },
-		Substitute = { fg = colors.gray7, bg = colors.orange },
+		Substitute = { fg = colors.gray2, bg = colors.orange },
 
-		TabLine = { fg = colors.gray4 },
-		TabLineFill = { fg = colors.gray4 },
+		TabLine = { fg = colors.gray2 },
+		TabLineFill = { fg = colors.gray2 },
 		TabLineSel = { fg = colors.fg },
 		Tag = { fg = colors.gray3 },
-		TermCursor = { fg = colors.fg, bg = colors.gray8 },
-		TermCursorNC = { fg = colors.fg, bg = colors.gray8 },
+		TermCursor = { fg = colors.fg, bg = colors.gray3 },
+		TermCursorNC = { fg = colors.fg, bg = colors.gray3 },
 		Title = { fg = colors.gray3 },
 		Todo = { fg = colors.yellow, bold = true },
 		Type = { fg = colors.blue, italic = config.italic_keywords == "italic" },
@@ -185,12 +176,13 @@ function M.setup(opts)
 		VertSplit = { fg = colors.gray2 },
 		WinSeparator = { fg = colors.gray1 },
 		Visual = { fg = "NONE", bg = colors.bg3, bold = true },
-		VisualNOS = { fg = colors.gray2, bg = colors.gray5 },
+		VisualNOS = { fg = colors.gray2, bg = colors.gray2 },
 
 		WarningMsg = { fg = colors.orange2, bg = "NONE" },
-		Whitespace = { fg = colors.gray6 },
+		Whitespace = { fg = colors.gray2 },
 		WildMenu = { fg = colors.fg },
-		lCursor = { fg = colors.fg, bg = colors.gray8 },
+		lCursor = { fg = colors.fg, bg = colors.gray3 },
+		YankHighlight = { fg = colors.bg, bg = colors.orange },
 
 		-- Markdown
 		markdownBold = { fg = colors.fg, bold = true },
@@ -207,17 +199,17 @@ function M.setup(opts)
 		markdownId = { fg = colors.pink },
 		markdownItalic = { fg = colors.fg, italic = true },
 		markdownLinkText = { fg = colors.fg },
-		markdownRule = { fg = colors.gray9 },
+		markdownRule = { fg = colors.gray3 },
 		markdownListMarker = { fg = colors.red },
 		markdownHeadingDelimiter = { fg = colors.fg },
-		markdownHeadingRule = { fg = colors.gray9 },
+		markdownHeadingRule = { fg = colors.gray3 },
 		markdownUrlTitleDelimiter = { fg = colors.fg },
 		markdownCodeSpecial = { fg = colors.orange },
 		markdownCodeDelimiter = { fg = colors.green },
-		markdownBlockquote = { fg = colors.gray9 },
+		markdownBlockquote = { fg = colors.gray3 },
 		markdownIdDeclaration = { fg = colors.fg },
-		markdownIdDelimiter = { fg = colors.gray7 },
-		markdownLinkDelimiter = { fg = colors.gray7 },
+		markdownIdDelimiter = { fg = colors.gray2 },
+		markdownLinkDelimiter = { fg = colors.gray2 },
 		markdownOrderedListMarker = { fg = colors.red },
 
 		-----------------------------------------
@@ -225,15 +217,15 @@ function M.setup(opts)
 		-----------------------------------------
 
 		-- Buffer
-		BufferCurrent = { fg = colors.fg, bg = colors.bg4 },
+		BufferCurrent = { fg = colors.fg, bg = colors.bg2 },
 		BufferCurrentIndex = { fg = colors.fg, bg = colors.bg },
 		BufferCurrentMod = { fg = colors.yellow, bg = colors.bg },
 		BufferCurrentSign = { fg = colors.blue, bg = colors.bg },
 		BufferCurrentTarget = { fg = colors.red, bg = colors.bg, bold = true },
-		BufferInactive = { fg = colors.gray7, bg = colors.bg2 },
-		BufferInactiveIndex = { fg = colors.gray7, bg = colors.bg2 },
+		BufferInactive = { fg = colors.gray2, bg = colors.bg2 },
+		BufferInactiveIndex = { fg = colors.gray2, bg = colors.bg2 },
 		BufferInactiveMod = { fg = colors.yellow, bg = colors.bg2 },
-		BufferInactiveSign = { fg = colors.gray7, bg = colors.bg2 },
+		BufferInactiveSign = { fg = colors.gray2, bg = colors.bg2 },
 		BufferInactiveTarget = { fg = colors.red, bg = colors.bg2, bold = true },
 		BufferVisible = { fg = colors.fg, bg = colors.bg },
 		BufferVisibleIndex = { fg = colors.fg, bg = colors.bg },
@@ -252,7 +244,7 @@ function M.setup(opts)
 		-- Cmp
 		CmpItemAbbrDeprecated = { fg = colors.gray1 },
 		CmpDocumentation = { fg = colors.fg },
-		CmpDocumentationBorder = { fg = colors.gray7 },
+		CmpDocumentationBorder = { fg = colors.gray2 },
 		CmpItemAbbr = { fg = colors.fg },
 		CmpItemAbbrMatch = { fg = colors.blue },
 		CmpItemAbbrMatchFuzzy = { fg = colors.blue },
@@ -274,25 +266,25 @@ function M.setup(opts)
 		-- Blink.cmp
 		BlinkCmpMenu = { fg = colors.gray14, bg = colors.bg2 },
 		BlinkCmpMenuBorder = { fg = colors.gray1, bg = colors.bg2 },
-		BlinkCmpMenuSelection = { bg = colors.bg3, bold = true },
+		BlinkCmpMenuSelection = { bg = colors.bg2, bold = true },
 		BlinkCmpScrollBarThumb = { bg = colors.gray2 },
-		BlinkCmpScrollBarGutter = { bg = colors.gray7 },
+		BlinkCmpScrollBarGutter = { bg = colors.gray2 },
 
-		BlinkCmpLabel = { fg = colors.gray9 },
+		BlinkCmpLabel = { fg = colors.gray3 },
 		BlinkCmpLabelDeprecated = { fg = colors.gray2, strikethrough = true },
 		BlinkCmpLabelMatch = { fg = colors.blue, bold = true },
-		BlinkCmpLabelDetail = { fg = colors.gray9 },
-		BlinkCmpLabelDescription = { fg = colors.gray9 },
+		BlinkCmpLabelDetail = { fg = colors.gray3 },
+		BlinkCmpLabelDescription = { fg = colors.gray3 },
 
-		BlinkCmpGhostText = { fg = colors.gray8 },
+		BlinkCmpGhostText = { fg = colors.gray3 },
 
 		BlinkCmpDoc = { fg = colors.fg, bg = colors.bg2 },
-		BlinkCmpDocBorder = { fg = colors.gray9, bg = colors.bg2 },
-		BlinkCmpDocSeparator = { fg = colors.gray9, bg = colors.bg2 },
-		BlinkCmpDocCursorLine = { bg = colors.bg3 },
+		BlinkCmpDocBorder = { fg = colors.gray3, bg = colors.bg2 },
+		BlinkCmpDocSeparator = { fg = colors.gray3, bg = colors.bg2 },
+		BlinkCmpDocCursorLine = { bg = colors.bg2 },
 
 		BlinkCmpSignatureHelp = { fg = colors.fg, bg = colors.bg2 },
-		BlinkCmpSignatureHelpBorder = { fg = colors.gray9, bg = colors.bg2 },
+		BlinkCmpSignatureHelpBorder = { fg = colors.gray3, bg = colors.bg2 },
 		BlinkCmpSignatureHelpActiveParameter = { fg = colors.yellow, bold = true },
 
 		BlinkCmpSource = { fg = colors.pink },
@@ -304,7 +296,7 @@ function M.setup(opts)
 		BlinkCmpKindConstant = { fg = colors.orange },
 		BlinkCmpKindConstructor = { fg = colors.blue },
 		BlinkCmpKindEnum = { fg = colors.yellow },
-		BlinkCmpKindEnumMember = { fg = colors.blue3 },
+		BlinkCmpKindEnumMember = { fg = colors.blue2 },
 		BlinkCmpKindEvent = { fg = colors.blue },
 		BlinkCmpKindField = { fg = colors.green },
 		BlinkCmpKindFile = { fg = colors.blue },
@@ -314,7 +306,7 @@ function M.setup(opts)
 		BlinkCmpKindKeyword = { fg = colors.pink },
 		BlinkCmpKindMethod = { fg = colors.blue },
 		BlinkCmpKindModule = { fg = colors.blue },
-		BlinkCmpKindOperator = { fg = colors.blue3 },
+		BlinkCmpKindOperator = { fg = colors.blue2 },
 		BlinkCmpKindProperty = { fg = colors.blue },
 		BlinkCmpKindReference = { fg = colors.red },
 		BlinkCmpKindSnippet = { fg = colors.red },
@@ -324,7 +316,7 @@ function M.setup(opts)
 		BlinkCmpKindUnit = { fg = colors.green },
 		BlinkCmpKindValue = { fg = colors.orange },
 		BlinkCmpKindVariable = { fg = colors.red },
-		BlinkCmpKindCopilot = { fg = colors.blue3 },
+		BlinkCmpKindCopilot = { fg = colors.blue2 },
 
 		-- Snacks.nvim - Dashboard
 		SnacksDashboardNormal = { fg = colors.gray1 },
@@ -340,43 +332,43 @@ function M.setup(opts)
 		SnacksDashboardSpecial = { fg = colors.yellow },
 
 		-- Snacks.nvim - Picker
-		SnacksPicker = { fg = colors.fg, bg = colors.bg2 },
-		SnacksPickerBorder = { fg = colors.gray1, bg = colors.bg2 },
-		SnacksPickerTitle = { fg = colors.gray1, bg = "NONE" },
-		SnacksPickerCursorLine = { bg = colors.bg3 },
-		SnacksPickerListCursorLine = { bg = colors.bg3, bold = true },
-		SnacksPickerPreviewCursorLine = { bg = colors.bg3, bold = true },
-		SnacksPickerSearch = { fg = colors.gray6, bg = colors.orange },
-		SnacksPickerPickWin = { fg = colors.gray6, bg = colors.orange },
+		SnacksPicker = { fg = colors.fg, bg = colors.bg },
+		SnacksPickerBorder = { fg = colors.gray1, bg = "NONE" },
+		SnacksPickerTitle = { fg = colors.fg, bg = "NONE" },
+		SnacksPickerCursorLine = { bg = colors.bg2 },
+		SnacksPickerListCursorLine = { bg = colors.bg2, bold = true },
+		SnacksPickerPreviewCursorLine = { bg = colors.bg2, bold = true },
+		SnacksPickerSearch = { fg = colors.fg, bg = colors.bg },
+		SnacksPickerPickWin = { fg = colors.gray2, bg = colors.orange },
 		SnacksPickerPickWinCurrent = { fg = colors.bg, bg = colors.orange },
-		SnacksPickerMatch = { fg = colors.gray4 },
-		SnacksPickerPrompt = { fg = colors.gray4 },
-		SnacksPickerSpinner = { fg = colors.gray4 },
-		SnacksPickerSpecial = { fg = colors.gray4 },
+		SnacksPickerMatch = { fg = colors.orange2, bold = true },
+		SnacksPickerPrompt = { fg = colors.fg, bg = colors.bg },
+		SnacksPickerSpinner = { fg = colors.gray2 },
+		SnacksPickerSpecial = { fg = colors.gray2 },
 
-		SnacksPickerDir = { fg = colors.gray8 },
+		SnacksPickerDir = { fg = colors.gray3 },
 		SnacksPickerDirectory = { fg = colors.fg },
 		SnacksPickerDimmed = { fg = colors.fg },
 		SnacksPickerBold = { bold = true },
 		SnacksPickerItalic = { italic = true },
-		SnacksPickerDelim = { fg = colors.gray4 },
+		SnacksPickerDelim = { fg = colors.gray2 },
 
-		SnacksPickerTree = { fg = colors.gray6 },
-		SnacksPickerCol = { fg = colors.gray6 },
+		SnacksPickerTree = { fg = colors.gray2 },
+		SnacksPickerCol = { fg = colors.gray2 },
 		SnacksPickerRow = { fg = colors.yellow },
 		SnacksPickerIdx = { fg = colors.orange },
 		SnacksPickerSelected = { fg = colors.orange },
-		SnacksPickerUnselected = { fg = colors.gray8 },
-		SnacksPickerTotals = { fg = colors.gray8 },
+		SnacksPickerUnselected = { fg = colors.gray3 },
+		SnacksPickerTotals = { fg = colors.gray3 },
 		SnacksPickerToggle = { fg = colors.yellow },
 
-		SnacksPickerIcon = { fg = colors.gray4, bg = "NONE" },
+		SnacksPickerIcon = { fg = colors.gray2, bg = "NONE" },
 		SnacksPickerIconFile = { fg = colors.fg },
-		SnacksPickerIconEvent = { fg = colors.gray4 },
+		SnacksPickerIconEvent = { fg = colors.gray2 },
 		SnacksPickerIconArray = { fg = colors.fg },
 		SnacksPickerIconCategory = { fg = colors.blue },
 		SnacksPickerIconConstructor = { fg = colors.fg },
-		SnacksPickerIconEnumMember = { fg = colors.blue3 },
+		SnacksPickerIconEnumMember = { fg = colors.blue2 },
 		SnacksPickerIconField = { fg = colors.fg },
 		SnacksPickerIconModule = { fg = colors.blue },
 		SnacksPickerIconNamespace = { fg = colors.blue },
@@ -390,9 +382,9 @@ function M.setup(opts)
 		SnacksPickerLink = { fg = colors.gray2 },
 		SnacksPickerLinkBroken = { fg = colors.red2 },
 
-		SnacksPickerPathHidden = { fg = colors.gray8 },
-		SnacksPickerPathIgnored = { fg = colors.gray8 },
-		SnacksPickerBufFlags = { fg = colors.gray8 },
+		SnacksPickerPathHidden = { fg = colors.gray3 },
+		SnacksPickerPathIgnored = { fg = colors.gray3 },
+		SnacksPickerBufFlags = { fg = colors.gray3 },
 		SnacksPickerBufNr = { fg = colors.orange },
 		SnacksPickerBufType = { fg = colors.green },
 		SnacksPickerFileType = { fg = colors.blue },
@@ -401,8 +393,8 @@ function M.setup(opts)
 		SnacksPickerCmdBuiltin = { fg = colors.fg },
 
 		SnacksPickerKeymapMode = { fg = colors.orange },
-		SnacksPickerKeymapLhs = { fg = colors.gray4 },
-		SnacksPickerKeymapRhs = { fg = colors.gray8 },
+		SnacksPickerKeymapLhs = { fg = colors.gray2 },
+		SnacksPickerKeymapRhs = { fg = colors.gray3 },
 		SnacksPickerKeymapNowait = { fg = colors.pink },
 		SnacksPickerRegister = { fg = colors.orange },
 
@@ -410,34 +402,34 @@ function M.setup(opts)
 		SnacksPickerAuGroup = { fg = colors.blue },
 		SnacksPickerAuPattern = { fg = colors.yellow },
 
-		SnacksPickerTime = { fg = colors.gray4 },
+		SnacksPickerTime = { fg = colors.gray2 },
 
-		SnacksPickerManPage = { fg = colors.gray4 },
+		SnacksPickerManPage = { fg = colors.gray2 },
 		SnacksPickerManSection = { fg = colors.orange },
 
-		SnacksPickerDiagnosticCode = { fg = colors.gray4 },
+		SnacksPickerDiagnosticCode = { fg = colors.gray2 },
 		SnacksPickerDiagnosticSource = { fg = colors.gray2 },
 
-		SnacksPickerLspEnabled = { fg = colors.gray4 },
+		SnacksPickerLspEnabled = { fg = colors.gray2 },
 		SnacksPickerLspAttached = { fg = colors.orange2 },
 		SnacksPickerLspAttachedBuf = { fg = colors.yellow },
 		SnacksPickerLspDisabled = { fg = colors.orange2 },
 		SnacksPickerLspUnavailable = { fg = colors.red2 },
 
-		SnacksPickerGitStatus = { fg = colors.gray4 },
+		SnacksPickerGitStatus = { fg = colors.gray2 },
 		SnacksPickerGitStatusAdded = { fg = colors.green2 },
 		SnacksPickerGitStatusDeleted = { fg = colors.red },
-		SnacksPickerGitStatusIgnored = { fg = colors.gray8 },
+		SnacksPickerGitStatusIgnored = { fg = colors.gray3 },
 		SnacksPickerGitStatusModified = { fg = colors.orange2 },
 		SnacksPickerGitStatusStaged = { fg = colors.blue },
 		SnacksPickerGitStatusUnmerged = { fg = colors.red2 },
-		SnacksPickerGitStatusUntracked = { fg = colors.gray8 },
+		SnacksPickerGitStatusUntracked = { fg = colors.gray3 },
 		SnacksPickerGitType = { fg = colors.gray3 },
 		SnacksPickerGitBranch = { fg = colors.gray3 },
 		SnacksPickerGitBranchCurrent = { fg = colors.orange },
 		SnacksPickerGitCommit = { fg = colors.pink },
 		SnacksPickerGitAuthor = { fg = colors.pink },
-		SnacksPickerGitDate = { fg = colors.gray4 },
+		SnacksPickerGitDate = { fg = colors.gray2 },
 		SnacksPickerGitDetached = { fg = colors.orange2 },
 		SnacksPickerGitIssue = { fg = colors.orange },
 		SnacksPickerGitScope = { italic = true },
@@ -446,7 +438,7 @@ function M.setup(opts)
 		SnacksPickerUndoAdded = { fg = colors.green2 },
 		SnacksPickerUndoRemoved = { fg = colors.red },
 		SnacksPickerUndoCurrent = { fg = colors.pink },
-		SnacksPickerUndoSaved = { fg = colors.gray4 },
+		SnacksPickerUndoSaved = { fg = colors.gray2 },
 
 		-- Snacks.nvim - Input
 		SnacksInputNormal = { fg = colors.fg, bg = colors.bg },
@@ -455,7 +447,7 @@ function M.setup(opts)
 		SnacksInputIcon = { fg = colors.blue },
 
 		-- Snacks.nvim - Indent
-		SnacksIndent = { fg = colors.gray4 },
+		SnacksIndent = { fg = colors.gray2 },
 		SnacksIndentScope = { fg = colors.red },
 		SnacksIndent1 = { fg = colors.yellow },
 		SnacksIndent2 = { fg = colors.blue },
@@ -477,20 +469,181 @@ function M.setup(opts)
 		SnacksWinBar = { fg = colors.gray3 },
 		SnacksWinKey = { fg = colors.red },
 		SnacksWinKeyDesc = { fg = colors.green },
-		SnacksWinKeySep = { fg = colors.gray8 },
+		SnacksWinKeySep = { fg = colors.gray3 },
 		SnacksWinSeparator = { fg = colors.gray2 },
 
 		-- Snacks.nvim - Image
-		SnacksImageAnchor = { fg = colors.gray4 },
-		SnacksImageLoading = { fg = colors.gray8 },
+		SnacksImageAnchor = { fg = colors.gray2 },
+		SnacksImageLoading = { fg = colors.gray3 },
 		SnacksImageMath = { fg = colors.pink },
-		SnacksImageSpinner = { fg = colors.gray4 },
+		SnacksImageSpinner = { fg = colors.gray2 },
 
 		-- Snacks.nvim - Normal & Backdrop
-		SnacksNormal = { fg = colors.fg, bg = colors.bg2 },
-		SnacksNormalNC = { fg = colors.fg, bg = colors.bg2 },
-		SnacksTitle = { fg = colors.blue, bg = colors.bg2 },
+		SnacksNormal = { fg = colors.fg, bg = colors.bg },
+		SnacksNormalNC = { fg = colors.fg, bg = colors.bg },
+		SnacksTitle = { fg = colors.blue, bg = "NONE" },
 		SnacksBackdrop = { bg = "#000000" },
+
+		-- Mini.nvim plugins
+		-- Mini.icons
+		MiniIconsAzure = { fg = colors.blue2 },
+		MiniIconsBlue = { fg = colors.blue },
+		MiniIconsCyan = { fg = colors.blue2 },
+		MiniIconsGreen = { fg = colors.green },
+		MiniIconsGrey = { fg = colors.fg },
+		MiniIconsOrange = { fg = colors.orange2 },
+		MiniIconsPurple = { fg = colors.pink },
+		MiniIconsRed = { fg = colors.red },
+		MiniIconsYellow = { fg = colors.yellow },
+
+		-- Mini.hipatterns
+		MiniHipatternsFixme = { fg = colors.bg, bg = colors.red, bold = true },
+		MiniHipatternsHack = { fg = colors.bg, bg = colors.yellow, bold = true },
+		MiniHipatternsTodo = { fg = colors.bg, bg = colors.blue2, bold = true },
+		MiniHipatternsNote = { fg = colors.bg, bg = colors.blue2, bold = true },
+
+		-- Mini.diff
+		MiniDiffSignAdd = { fg = colors.green, bg = colors.bg },
+		MiniDiffSignChange = { fg = colors.yellow, bg = colors.bg },
+		MiniDiffSignDelete = { fg = colors.red, bg = colors.bg },
+		MiniDiffOverAdd = { fg = colors.green },
+		MiniDiffOverChange = { fg = colors.yellow },
+		MiniDiffOverContext = { fg = colors.gray2 },
+		MiniDiffOverDelete = { fg = colors.red },
+
+		-- Mini.statusline
+		MiniStatuslineModeNormal = { fg = colors.bg2, bg = colors.blue, bold = true },
+		MiniStatuslineModeInsert = { fg = colors.bg, bg = colors.green, bold = true },
+		MiniStatuslineModeVisual = { fg = colors.bg, bg = colors.pink, bold = true },
+		MiniStatuslineModeReplace = { fg = colors.bg, bg = colors.red, bold = true },
+		MiniStatuslineModeCommand = { fg = colors.bg, bg = colors.orange2, bold = true },
+		MiniStatuslineModeOther = { fg = colors.bg, bg = colors.blue2, bold = true },
+		MiniStatuslineDevinfo = { fg = colors.gray3, bg = colors.gray2 },
+		MiniStatuslineFileinfo = { fg = colors.gray3, bg = colors.gray2 },
+		MiniStatuslineFilename = { fg = colors.fg, bg = colors.bg2 },
+		MiniStatuslineInactive = { fg = colors.blue, bg = colors.bg2 },
+
+		-- Mini.tabline
+		MiniTablineCurrent = {
+			fg = colors.fg,
+			bg = colors.bg,
+			bold = true,
+			italic = true,
+			underline = true,
+			sp = colors.red,
+		},
+		MiniTablineVisible = { fg = colors.fg, bg = colors.bg },
+		MiniTablineHidden = { fg = colors.fg, bg = colors.bg2 },
+		MiniTablineModifiedCurrent = { fg = colors.red, bold = true, italic = true },
+		MiniTablineModifiedVisible = { fg = colors.red },
+		MiniTablineModifiedHidden = { fg = colors.red },
+		MiniTablineFill = { bg = colors.bg },
+		MiniTablineTabpagesection = { fg = colors.gray2, bg = colors.bg },
+
+		-- Mini.starter
+		MiniStarterCurrent = { underline = true },
+		MiniStarterFooter = { fg = colors.yellow, italic = true },
+		MiniStarterHeader = { fg = colors.blue },
+		MiniStarterInactive = { fg = colors.gray1, italic = true },
+		MiniStarterItem = { fg = colors.fg },
+		MiniStarterItemBullet = { fg = colors.blue },
+		MiniStarterItemPrefix = { fg = colors.pink },
+		MiniStarterSection = { fg = colors.orange2 },
+		MiniStarterQuery = { fg = colors.green },
+
+		-- Mini.pick
+		MiniPickBorder = { fg = colors.gray2, bg = colors.bg2 },
+		MiniPickBorderBusy = { fg = colors.orange2, bg = colors.bg2 },
+		MiniPickBorderText = { fg = colors.pink, bg = colors.bg2 },
+		MiniPickHeader = { fg = colors.blue },
+		MiniPickIconDirectory = { fg = colors.fg },
+		MiniPickIconFile = { fg = colors.fg },
+		MiniPickMatchCurrent = { fg = colors.orange2, bg = colors.bg2, bold = true },
+		MiniPickMatchMarked = { fg = colors.orange2, bg = colors.bg2 },
+		MiniPickMatchRanges = { fg = colors.blue },
+		MiniPickNormal = { fg = colors.fg, bg = colors.bg2 },
+		MiniPickPreviewLine = { bg = colors.bg2 },
+		MiniPickPreviewRegion = { bg = colors.gray2 },
+		MiniPickPrompt = { fg = colors.fg, bg = colors.bg2 },
+		MiniPickPromptCaret = { fg = colors.orange2, bg = colors.bg2 },
+		MiniPickPromptPrefix = { fg = colors.orange2, bg = colors.bg2 },
+
+		-- Mini.files
+		MiniFilesBorder = { fg = colors.gray2, bg = colors.bg2 },
+		MiniFilesBorderModified = { fg = colors.orange2, bg = colors.bg2 },
+		MiniFilesCursorLine = { bg = colors.bg2 },
+		MiniFilesDirectory = { fg = colors.fg },
+		MiniFilesFile = { fg = colors.fg },
+		MiniFilesNormal = { fg = colors.fg, bg = colors.bg2 },
+		MiniFilesTitle = { fg = colors.blue, bg = colors.bg2 },
+		MiniFilesTitleFocused = { fg = colors.gray3, bg = colors.bg2, bold = true },
+
+		-- Mini.clue
+		MiniClueBorder = { fg = colors.gray2, bg = colors.bg2 },
+		MiniClueDescGroup = { fg = colors.orange2 },
+		MiniClueDescSingle = { fg = colors.fg, bg = colors.bg2 },
+		MiniClueNextKey = { fg = colors.blue },
+		MiniClueNextKeyWithPostkeys = { fg = colors.red2 },
+		MiniClueSeparator = { fg = colors.yellow },
+		MiniClueTitle = { fg = colors.blue, bg = colors.bg2 },
+
+		-- Mini.deps
+		MiniDepsChangeAdded = { fg = colors.green },
+		MiniDepsChangeRemoved = { fg = colors.red },
+		MiniDepsHint = { fg = colors.blue },
+		MiniDepsInfo = { fg = colors.yellow },
+		MiniDepsMsgBreaking = { fg = colors.orange2 },
+		MiniDepsPlaceholder = { fg = colors.gray1 },
+		MiniDepsTitle = { fg = colors.blue },
+		MiniDepsTitleError = { fg = colors.bg, bg = colors.red },
+		MiniDepsTitleSame = { fg = colors.gray2 },
+		MiniDepsTitleUpdate = { fg = colors.bg, bg = colors.green },
+
+		-- Mini.notify
+		MiniNotifyBorder = { fg = colors.gray2, bg = colors.bg2 },
+		MiniNotifyNormal = { fg = colors.fg, bg = colors.bg2 },
+		MiniNotifyTitle = { fg = colors.blue, bg = colors.bg2 },
+
+		-- Mini.map
+		MiniMapNormal = { fg = colors.fg, bg = colors.bg2 },
+		MiniMapSymbolCount = { fg = colors.gray3 },
+		MiniMapSymbolLine = { fg = colors.fg },
+		MiniMapSymbolView = { fg = colors.gray3 },
+
+		-- Mini.jump / Mini.jump2d
+		MiniJump = { fg = colors.gray2, bg = colors.pink },
+		MiniJump2dDim = { fg = colors.gray2 },
+		MiniJump2dSpot = { fg = colors.orange2, bg = colors.bg, bold = true, underline = true },
+		MiniJump2dSpotAhead = { fg = colors.blue2, bg = colors.bg2 },
+		MiniJump2dSpotUnique = { fg = colors.blue2, bg = colors.bg, bold = true },
+
+		-- Mini.indentscope
+		MiniIndentscopeSymbol = { fg = colors.red },
+
+		-- Mini.cursorword
+		MiniCursorword = { bg = colors.purple },
+		MiniCursorwordCurrent = { bg = colors.purple },
+
+		-- Mini.surround
+		MiniSurround = { fg = colors.gray2, bg = colors.pink },
+
+		-- Mini.test
+		MiniTestEmphasis = { bold = true },
+		MiniTestFail = { fg = colors.red, bold = true },
+		MiniTestPass = { fg = colors.green, bold = true },
+
+		-- Mini.trailspace
+		MiniTrailspace = { bg = colors.red },
+
+		-- Mini.completion
+		MiniCompletionActiveParameter = { underline = true },
+
+		-- Mini.animate
+		MiniAnimateCursor = { reverse = true, nocombine = true },
+		MiniAnimateNormalFloat = { fg = colors.fg, bg = colors.bg2 },
+
+		-- Mini.operators
+		MiniOperatorsExchangeFrom = { fg = colors.fg, bg = colors.gray1 },
 
 		-- Dashboard
 		DashboardCenter = { fg = colors.fg },
@@ -499,33 +652,46 @@ function M.setup(opts)
 
 		-- Debug
 		debugBreakpoint = { fg = colors.red, reverse = true },
-		debugPc = { bg = colors.gray10 },
+		debugPc = { bg = colors.gray3 },
 
 		-- Diffview
-		DiffViewNormal = { fg = colors.gray7, bg = colors.bg2 },
+		DiffViewNormal = { fg = colors.gray2, bg = colors.bg2 },
 		DiffviewFilePanelDeletion = { fg = colors.red2 },
 		DiffviewFilePanelInsertion = { fg = colors.green2 },
 		DiffviewStatusAdded = { fg = colors.green2 },
 		DiffviewStatusDeleted = { fg = colors.red2 },
-		DiffviewStatusModified = { fg = colors.blue3 },
-		DiffviewStatusRenamed = { fg = colors.blue3 },
+		DiffviewStatusModified = { fg = colors.blue2 },
+		DiffviewStatusRenamed = { fg = colors.blue2 },
 		DiffviewVertSplit = { bg = colors.bg },
 
 		-- Gitsigns
-		GitSignsAdd = { fg = colors.green, bg = colors.bg1 },
-		GitSignsChange = { fg = colors.blue3, bg = colors.bg1 },
-		GitSignsDelete = { fg = colors.red, bg = colors.bg1 },
+		GitSignsAdd = { fg = colors.green },
+		GitSignsChange = { fg = colors.blue2 },
+		GitSignsDelete = { fg = colors.red },
+		GitSignsAddLn = { bg = colors.bg3 },
+		GitSignsChangeLn = { bg = colors.bg3 },
+		GitSignsDeleteLn = { bg = colors.bg3 },
 
 		-- GitGutter
 		GitGutterAdd = { fg = colors.green2 },
-		GitGutterChange = { fg = colors.blue3 },
+		GitGutterChange = { fg = colors.blue2 },
 		GitGutterDelete = { fg = colors.red2 },
 
 		-- Indent-blankline
-		IndentBlanklineChar = { fg = colors.bg3 },
-		IndentBlanklineContextChar = { fg = colors.gray7 },
-		IndentBlanklineSpaceChar = { fg = colors.gray10 },
+		IndentBlanklineChar = { fg = colors.bg2 },
+		IndentBlanklineContextChar = { fg = colors.gray2 },
+		IndentBlanklineSpaceChar = { fg = colors.gray3 },
 		IndentBlanklineSpaceCharBlankline = { fg = colors.yellow },
+
+		-- LSP References (word highlights under cursor)
+		LspReferenceText = { bg = colors.purple },
+		LspReferenceRead = { bg = colors.purple },
+		LspReferenceWrite = { bg = colors.purple },
+
+		-- vim-illuminate
+		IlluminatedWordText = { bg = colors.purple },
+		IlluminatedWordRead = { bg = colors.purple },
+		IlluminatedWordWrite = { bg = colors.purple },
 
 		-- LSP Diagnostics
 		DiagnosticVirtualTextInfo = { fg = colors.yellow },
@@ -540,10 +706,10 @@ function M.setup(opts)
 		DiagnosticFloatingInfo = { fg = colors.yellow },
 		DiagnosticFloatingWarn = { fg = colors.orange2 },
 
-		DiagnosticSignError = { fg = colors.red2, bg = colors.bg1 },
-		DiagnosticSignHint = { fg = colors.blue, bg = colors.bg1 },
-		DiagnosticSignInfo = { fg = colors.yellow, bg = colors.bg1 },
-		DiagnosticSignWarn = { fg = colors.orange2, bg = colors.bg1 },
+		DiagnosticSignError = { fg = colors.red2, bg = colors.bg },
+		DiagnosticSignHint = { fg = colors.blue, bg = colors.bg },
+		DiagnosticSignInfo = { fg = colors.yellow, bg = colors.bg },
+		DiagnosticSignWarn = { fg = colors.orange2, bg = colors.bg },
 
 		DiagnosticUnderlineError = { underline = true },
 		DiagnosticUnderlineHint = { underline = true },
@@ -551,7 +717,7 @@ function M.setup(opts)
 		DiagnosticUnderlineWarn = { underline = true },
 
 		DiagnosticVirtualTextError = { fg = colors.red2 },
-		DiagnosticVirtualTextHint = { fg = colors.gray7 },
+		DiagnosticVirtualTextHint = { fg = colors.gray2 },
 
 		-- NERDTree
 		Directory = { fg = colors.fg },
@@ -584,7 +750,7 @@ function M.setup(opts)
 		-- NERDTreeCurrentNode = { fg = colors.gray1 },
 
 		-- Startify
-		StartifyEndOfBuffer = { fg = colors.gray6 },
+		StartifyEndOfBuffer = { fg = colors.gray2 },
 		StartifyNumber = { fg = colors.red },
 		StartifySelect = { fg = colors.gray1 },
 		StartifyBracket = { fg = colors.fg },
@@ -598,11 +764,11 @@ function M.setup(opts)
 		StartifySection = { fg = colors.pink },
 
 		-- Indent Guides
-		IndentGuidesEven = { fg = colors.gray10 },
+		IndentGuidesEven = { fg = colors.gray3 },
 		IndentGuidesOdd = { fg = colors.gray1 },
 
 		-- Flutter Tools
-		FlutterWidgetGuides = { fg = colors.gray7 },
+		FlutterWidgetGuides = { fg = colors.gray2 },
 
 		-- Python
 		pythonConditional = { fg = colors.red },
@@ -616,50 +782,50 @@ function M.setup(opts)
 		-- Neogit
 		NeogitBranch = { fg = colors.pink },
 		NeogitRemote = { fg = colors.pink },
-		NeogitHunkHeader = { fg = colors.gray9, bg = colors.bg2 },
-		NeogitDiffContext = { fg = colors.gray9, bg = colors.bg },
+		NeogitHunkHeader = { fg = colors.gray3, bg = colors.bg2 },
+		NeogitDiffContext = { fg = colors.gray3, bg = colors.bg },
 		NeogitDiffAdd = { fg = colors.green2, bg = colors.bg2 },
 		NeogitDiffDelete = { fg = colors.red2, bg = colors.bg2 },
-		NeogitHunkHeaderHighlight = { fg = colors.gray9, bg = colors.bg2 },
-		NeogitDiffContextHighlight = { fg = colors.gray9, bg = colors.bg },
+		NeogitHunkHeaderHighlight = { fg = colors.gray3, bg = colors.bg2 },
+		NeogitDiffContextHighlight = { fg = colors.gray3, bg = colors.bg },
 		NeogitDiffAddHighlight = { fg = colors.green2, bg = colors.bg2 },
 		NeogitDiffDeleteHighlight = { fg = colors.red2, bg = colors.bg2 },
 
 		-- Nvim-tree
 		NvimTreeFolderIcon = { fg = colors.orange },
 		NvimTreeEmptyFolderName = { fg = colors.yellow, italic = true },
-		NvimTreeCursorLine = { fg = colors.gray4, bg = colors.bg3 },
+		NvimTreeCursorLine = { fg = colors.gray2, bg = colors.bg2 },
 		NvimTreeExecFile = { fg = colors.green },
-		NvimTreeFolderName = { fg = colors.gray10 },
+		NvimTreeFolderName = { fg = colors.gray3 },
 		NvimTreeGitDeleted = { fg = colors.red2 },
 		NvimTreeGitDirty = { fg = colors.green2 },
-		NvimTreeGitMerge = { fg = colors.blue3 },
+		NvimTreeGitMerge = { fg = colors.blue2 },
 		NvimTreeGitNew = { fg = colors.green2 },
-		NvimTreeGitRenamed = { fg = colors.blue3 },
+		NvimTreeGitRenamed = { fg = colors.blue2 },
 		NvimTreeGitStaged = { fg = colors.green2 },
 		NvimTreeImageFile = { fg = colors.pink },
 		NvimTreeIndentMarker = { fg = colors.gray1 },
-		NvimTreeNormal = { fg = colors.gray10, bg = colors.bg2 },
+		NvimTreeNormal = { fg = colors.gray3, bg = colors.bg2 },
 		NvimTreeNormalNC = { bg = colors.bg2 },
-		NvimTreeOpenedFolderName = { fg = colors.gray10, italic = true },
+		NvimTreeOpenedFolderName = { fg = colors.gray3, italic = true },
 		NvimTreeRootFolder = { fg = colors.yellow, bold = true },
 		NvimTreeSpecialFile = { fg = colors.orange },
 		NvimTreeSymlink = { fg = colors.yellow },
 		NvimTreeVertSplit = { fg = colors.bg2 },
-		NvimTreeEndOfBuffer = { fg = colors.gray6 },
+		NvimTreeEndOfBuffer = { fg = colors.gray2 },
 
 		-- Telescope
 		TelescopeBorder = { fg = colors.fg, bg = config.transparent_background and "NONE" or colors.bg },
 		TelescopeMatching = { fg = colors.yellow },
 		TelescopePromptPrefix = { fg = colors.green },
-		TelescopeSelection = { fg = colors.gray1, bg = colors.bg3 },
+		TelescopeSelection = { fg = colors.gray1, bg = colors.bg2 },
 
 		-- Trouble
 		TroubleTextInformation = { fg = colors.blue },
 		TroubleFile = { fg = colors.yellow },
 		TroubleFoldIcon = { fg = colors.blue },
 		TroubleCount = { fg = colors.red },
-		TroubleError = { fg = colors.red, bg = colors.gray4 },
+		TroubleError = { fg = colors.red, bg = colors.gray2 },
 		TroubleTextError = { fg = colors.red },
 		TroubleNormal = { fg = colors.fg },
 		TroubleLocation = { fg = colors.fg },
@@ -717,7 +883,7 @@ function M.setup(opts)
 		TSEmphasis = { italic = true },
 		TSError = { fg = colors.red2, bg = colors.bg, bold = true },
 		TSException = { fg = colors.red },
-		TSField = { fg = colors.blue3 },
+		TSField = { fg = colors.blue2 },
 		TSFloat = { fg = colors.orange },
 		TSFuncBuiltin = { fg = colors.orange2, italic = config.italic_functions },
 		TSFuncMacro = { fg = colors.pink, italic = config.italic_functions },
@@ -733,10 +899,10 @@ function M.setup(opts)
 		TSMethod = { fg = colors.blue, italic = config.italic_functions },
 		TSNamespace = { fg = colors.blue },
 		TSNumber = { fg = colors.orange },
-		TSOperator = { fg = colors.blue3 },
+		TSOperator = { fg = colors.blue2 },
 		TSParameter = { fg = colors.orange },
 		TSParameterReference = { fg = colors.orange },
-		TSProperty = { fg = colors.blue3 },
+		TSProperty = { fg = colors.blue2 },
 		TSPunctBracket = { fg = colors.fg },
 		TSPunctDelimiter = { fg = colors.fg },
 		TSPunctSpecial = { fg = colors.gray3 },
@@ -777,7 +943,7 @@ function M.setup(opts)
 		["@emphasis"] = { italic = true },
 		["@error"] = { fg = colors.red2, bg = colors.bg, bold = true },
 		["@exception"] = { fg = colors.red },
-		["@field"] = { fg = colors.blue3 },
+		["@field"] = { fg = colors.blue2 },
 		["@float"] = { fg = colors.orange },
 		["@function"] = { fg = colors.blue, italic = config.italic_functions },
 		["@function.builtin"] = { fg = colors.orange2, italic = config.italic_functions },
@@ -792,10 +958,10 @@ function M.setup(opts)
 		["@namespace"] = { fg = colors.blue },
 		["@none"] = { fg = colors.orange },
 		["@number"] = { fg = colors.orange },
-		["@operator"] = { fg = colors.blue3 },
+		["@operator"] = { fg = colors.blue },
 		["@parameter"] = { fg = colors.orange },
 		["@parameter.reference"] = { fg = colors.orange },
-		["@property"] = { fg = colors.blue3 },
+		["@property"] = { fg = colors.yellow },
 		["@punctuation.bracket"] = { fg = colors.fg },
 		["@punctuation.delimiter"] = { fg = colors.fg },
 		["@punctuation.special"] = { fg = colors.gray3 },
@@ -816,7 +982,7 @@ function M.setup(opts)
 		["@type.builtin"] = { fg = colors.blue },
 		["@type.qualifier"] = { fg = colors.red },
 		["@variable"] = { fg = colors.fg, italic = config.italic_variables },
-		["@variable.member"] = { fg = colors.blue3, italic = config.italic_variables },
+		["@variable.member"] = { fg = colors.yellow, italic = config.italic_variables },
 		["@variable.builtin"] = { fg = colors.red, italic = config.italic_variables },
 		["@variable.parameter"] = { fg = colors.orange, italic = config.italic_variables },
 	}
