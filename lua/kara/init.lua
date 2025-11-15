@@ -16,17 +16,17 @@ M.colors = {
 	gray3 = "#C6D0E0", -- lightest - active text, important UI elements
 
 	-- Primary colors
+	purple = "#6a4c93",
+	pink = "#D895C7",
 	red = "#E85A84",
 	red2 = "#D95555",
-	green = "#A6DB95",
-	green2 = "#52b788",
-	blue = "#7EB7E6",
-	blue2 = "#6CAEC0",
-	yellow = "#EED49F",
 	orange = "#E0828D",
 	orange2 = "#FAB387",
-	pink = "#D895C7",
-	purple = "#6a4c93",
+	yellow = "#EED49F",
+	green = "#A6DB95",
+	green2 = "#52b788",
+	blue2 = "#6CAEC0",
+	blue = "#7EB7E6",
 }
 
 -- Configuration options
@@ -621,8 +621,8 @@ function M.setup(opts)
 		MiniIndentscopeSymbol = { fg = colors.red },
 
 		-- Mini.cursorword
-		MiniCursorword = { bg = colors.purple },
-		MiniCursorwordCurrent = { bg = colors.purple },
+		MiniCursorword = { underline = true },
+		MiniCursorwordCurrent = { underline = true },
 
 		-- Mini.surround
 		MiniSurround = { fg = colors.gray2, bg = colors.pink },
@@ -684,14 +684,14 @@ function M.setup(opts)
 		IndentBlanklineSpaceCharBlankline = { fg = colors.yellow },
 
 		-- LSP References (word highlights under cursor)
-		LspReferenceText = { bg = colors.purple },
-		LspReferenceRead = { bg = colors.purple },
-		LspReferenceWrite = { bg = colors.purple },
+		LspReferenceText = { underline = true },
+		LspReferenceRead = { underline = true },
+		LspReferenceWrite = { underline = true },
 
 		-- vim-illuminate
-		IlluminatedWordText = { bg = colors.purple },
-		IlluminatedWordRead = { bg = colors.purple },
-		IlluminatedWordWrite = { bg = colors.purple },
+		IlluminatedWordText = { underline = true },
+		IlluminatedWordRead = { underline = true },
+		IlluminatedWordWrite = { underline = true },
 
 		-- LSP Diagnostics
 		DiagnosticVirtualTextInfo = { fg = colors.yellow },
@@ -819,6 +819,11 @@ function M.setup(opts)
 		TelescopeMatching = { fg = colors.yellow },
 		TelescopePromptPrefix = { fg = colors.green },
 		TelescopeSelection = { fg = colors.gray1, bg = colors.bg2 },
+
+		-- Leap.nvim
+		LeapLabel = { fg = colors.bg, bg = colors.orange2, bold = true },
+		LeapMatch = { fg = colors.yellow, bg = colors.bg3, bold = true },
+		LeapBackdrop = { fg = colors.gray1 },
 
 		-- Trouble
 		TroubleTextInformation = { fg = colors.blue },
