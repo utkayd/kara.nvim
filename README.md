@@ -81,6 +81,25 @@ require("kara").setup({
 })
 ```
 
+## 🖥️ Using with Ghostty Terminal
+
+Kara includes a theme file for [Ghostty](https://ghostty.org/), the modern GPU-accelerated terminal emulator. To use the Kara colorscheme in Ghostty:
+
+1. **Copy the theme file** to your Ghostty themes directory:
+   ```bash
+   mkdir -p ~/.config/ghostty/themes
+   cp kara.ghostty ~/.config/ghostty/themes/kara
+   ```
+
+2. **Enable the theme** in your Ghostty config (`~/.config/ghostty/config`):
+   ```
+   theme = kara
+   ```
+
+Alternatively, you can directly include the theme configuration in your Ghostty config file by copying the contents of `kara.ghostty`.
+
+The Ghostty theme uses the same color palette as the Neovim colorscheme, ensuring a consistent visual experience across your editor and terminal.
+
 ## 🎨 Color Palette
 
 | Color | Hex | Usage |
