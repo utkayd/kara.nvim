@@ -320,14 +320,14 @@ function M.setup(opts)
 
 		-- Snacks.nvim - Dashboard
 		SnacksDashboardNormal = { fg = colors.gray1 },
-		SnacksDashboardDesc = { fg = colors.gray1 },
+		SnacksDashboardDesc = { fg = colors.fg },
 		SnacksDashboardDir = { fg = colors.gray2 },
 		SnacksDashboardFile = { fg = colors.fg },
 		SnacksDashboardTerminal = { fg = colors.fg },
 		SnacksDashboardHeader = { fg = colors.gray1, bold = true },
 		SnacksDashboardTitle = { fg = colors.gray1, bold = true },
 		SnacksDashboardIcon = { fg = colors.gray1 },
-		SnacksDashboardKey = { fg = colors.fg },
+		SnacksDashboardKey = { fg = colors.gray1 },
 		SnacksDashboardFooter = { fg = colors.gray1, italic = true },
 		SnacksDashboardSpecial = { fg = colors.yellow },
 

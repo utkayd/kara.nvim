@@ -2,6 +2,8 @@
 
 **Kara** (meaning "Dark" or "Black" in Turkish) is a dark Neovim colorscheme that goes easy on your eyes, written in Lua.
 
+![Kara Colorscheme Screenshot](https://private-user-images.githubusercontent.com/8345143/514797176-c0acf969-d809-441e-8acf-1f3c4557aa60.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjMyMzQ2NzQsIm5iZiI6MTc2MzIzNDM3NCwicGF0aCI6Ii84MzQ1MTQzLzUxNDc5NzE3Ni1jMGFjZjk2OS1kODA5LTQ0MWUtOGFjZi0xZjNjNDU1N2FhNjAucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MTExNSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTExMTVUMTkxOTM0WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9MTU5NDViMzk2NjQxOWMyNjFlOWI1ZGU3ZTZjMTU4ZjBlY2Y3ZTEyYTVlNGRmNDRmMWQxMzNlZWJmOTAyZTE1MyZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.iDN-6xf7_IbxMIoQdILKE5fEwpJG_-6fyP4SgZUtfCQ)
+
 ## ✨ Features
 
 - **Dark theme** optimized for long coding sessions
@@ -85,14 +87,18 @@ require("kara").setup({
 |-------|-----|-------|
 | **Foreground** | `#DFE0EA` | Main text color |
 | **Background** | `#2b2e36` | Editor background |
+| **Background (Visual)** | `#3d4f6d` | Visual selection, cursor line |
+| **Purple** | `#6a4c93` | Special highlights |
+| **Pink** | `#D895C7` | Keywords, labels |
 | **Red** | `#E85A84` | Built-in variables, errors |
-| **Green** | `#A6DB95` | Strings, success messages |
-| **Blue** | `#7EB7E6` | Functions, types |
-| **Yellow** | `#EED49F` | Properties, warnings |
+| **Red2** | `#D95555` | Alternative red |
 | **Orange** | `#E0828D` | Constants |
 | **Orange2** | `#FAB387` | Numbers, built-in functions |
-| **Pink** | `#D895C7` | Keywords, labels |
-| **Purple** | `#6a4c93` | Cursor word highlights |
+| **Yellow** | `#EED49F` | Properties, warnings |
+| **Green** | `#A6DB95` | Strings, success messages |
+| **Green2** | `#52b788` | Alternative green |
+| **Blue** | `#7EB7E6` | Functions, types |
+| **Blue2** | `#6CAEC0` | Operators, secondary blue |
 | **Gray1** | `#6B7A94` | Comments, borders, inactive elements |
 | **Gray2** | `#8B9AAF` | Line numbers, delimiters, secondary text |
 | **Gray3** | `#C6D0E0` | Active elements, identifiers |

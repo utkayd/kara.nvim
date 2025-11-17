@@ -1,0 +1,42 @@
+# Kara theme for Ghostty
+# A dark, elegant colorscheme ported from the Neovim Kara theme
+# https://github.com/utkay/kara
+
+# Basic colors
+background = #2b2e36
+foreground = #DFE0EA
+cursor-color = #EED49F
+selection-background = #3d4f6d
+selection-foreground = #DFE0EA
+
+# Black
+palette = 0=#22252a
+palette = 8=#6B7A94
+
+# Red
+palette = 1=#E85A84
+palette = 9=#D95555
+
+# Green
+palette = 2=#A6DB95
+palette = 10=#52b788
+
+# Yellow
+palette = 3=#EED49F
+palette = 11=#FAB387
+
+# Blue
+palette = 4=#7EB7E6
+palette = 12=#6CAEC0
+
+# Magenta/Purple
+palette = 5=#6a4c93
+palette = 13=#D895C7
+
+# Cyan
+palette = 6=#6CAEC0
+palette = 14=#7EB7E6
+
+# White
+palette = 7=#C6D0E0
+palette = 15=#DFE0EA
