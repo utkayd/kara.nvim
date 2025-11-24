@@ -25,6 +25,7 @@ M.colors = {
 	yellow = "#EED49F",
 	green = "#A6DB95",
 	green2 = "#52b788",
+	blue3 = "#CAF0F8",
 	blue2 = "#6CAEC0",
 	blue = "#7EB7E6",
 }
@@ -74,30 +75,41 @@ function M.setup(opts)
 		Conceal = { fg = colors.fg },
 		Conditional = { fg = colors.pink },
 		Constant = { fg = colors.orange },
-		Cursor = { fg = colors.yellow, bg = colors.bg },
-		CursorColumn = { fg = "NONE", bg = "NONE" },
+		Cursor = { fg = colors.bg, bg = colors.orange },
+		CursorIM = { fg = colors.bg, bg = colors.orange },
+		CursorColumn = { bg = colors.bg2 },
 		CursorLine = { bg = colors.bg2 },
 		CursorLineNr = { fg = colors.yellow, bg = colors.bg2, bold = true },
+		CursorLineFold = { link = "FoldColumn" },
+		CursorLineSign = { link = "SignColumn" },
 
 		Debug = { fg = colors.fg },
 		Define = { fg = colors.blue },
 		Delimiter = { fg = colors.gray3 },
-		DiffAdd = { fg = colors.green },
-		DiffAdded = { fg = colors.green },
-		DiffChange = { fg = colors.green },
-		DiffDelete = { fg = colors.red },
-		DiffRemoved = { fg = colors.red },
-		DiffText = { fg = colors.gray3 },
-		DiffFile = { fg = colors.pink },
+		DiffAdd = { bg = colors.bg3 },
+		DiffChange = { bg = colors.bg3 },
+		DiffDelete = { bg = colors.bg3 },
+		DiffText = { bg = colors.bg3 },
+		diffAdded = { fg = colors.green },
+		diffRemoved = { fg = colors.red },
+		diffChanged = { fg = colors.blue },
+		diffOldFile = { fg = colors.yellow },
+		diffNewFile = { fg = colors.orange2 },
+		diffFile = { fg = colors.blue },
+		diffLine = { fg = colors.gray1 },
+		diffIndexLine = { fg = colors.blue2 },
+		Directory = { fg = colors.blue },
 
 		Error = { fg = colors.red2, bg = colors.bg, bold = true },
 		ErrorMsg = { fg = colors.red2, bg = "NONE", bold = true },
 		Exception = { fg = colors.fg },
 
 		Float = { fg = colors.orange },
-		FloatBorder = { fg = colors.gray2, bg = "NONE" },
-		FoldColumn = { fg = colors.gray2 },
-		Folded = { fg = colors.fg, bg = colors.bg2 },
+		FloatBorder = { fg = colors.blue, bg = "NONE" },
+		FloatTitle = { fg = colors.gray3, bold = true },
+		FloatFooter = { link = "FloatTitle" },
+		FoldColumn = { fg = colors.gray1 },
+		Folded = { fg = colors.blue, bg = colors.bg3 },
 		Function = { fg = colors.blue },
 
 		Identifier = { fg = colors.gray3 },
@@ -109,47 +121,57 @@ function M.setup(opts)
 
 		Label = { fg = colors.pink },
 		LineNr = { fg = colors.gray2, bg = colors.bg },
+		LineNrAbove = { link = "LineNr" },
+		LineNrBelow = { link = "LineNr" },
 
 		Macro = { fg = colors.red, italic = config.italic_keywords == "italic" },
-		MatchParen = { fg = colors.gray3, bg = colors.bg2 },
+		MatchParen = { fg = colors.orange2, bg = colors.bg3, bold = true },
 		MatchParenCur = { underline = true },
 		MatchWord = { underline = true },
 		MatchWordCur = { underline = true },
-		ModeMsg = { fg = colors.fg, bg = colors.bg },
-		MoreMsg = { fg = colors.orange2 },
+		ModeMsg = { fg = colors.fg, bold = true },
+		MoreMsg = { fg = colors.blue },
 		MsgArea = { fg = colors.fg, bg = config.transparent_background and "NONE" or colors.bg },
-		MsgSeparator = { fg = colors.fg, bg = colors.bg },
+		MsgSeparator = { fg = colors.gray2, bg = colors.bg },
 
 		NonText = { fg = colors.gray2 },
 		Normal = { fg = colors.fg, bg = config.transparent_background and "NONE" or colors.bg },
-		NormalFloat = { bg = colors.bg2 },
+		NormalFloat = { fg = colors.fg, bg = colors.bg2 },
 		NormalNC = { fg = colors.fg, bg = config.transparent_background and "NONE" or colors.bg },
+		NormalSB = { fg = colors.fg, bg = colors.bg2 },
 		Number = { fg = colors.orange },
 
 		Operator = { fg = colors.blue2 },
-		Pmenu = { fg = colors.gray3, bg = colors.bg2 },
-		PmenuSbar = { bg = colors.bg2 },
-		PmenuSel = { fg = colors.gray2, bg = colors.bg2 },
-		PmenuThumb = { bg = colors.bg2 },
+		Pmenu = { fg = colors.gray2, bg = colors.bg2 },
+		PmenuSbar = { bg = colors.bg3 },
+		PmenuSel = { bg = colors.bg3, bold = true },
+		PmenuKind = { link = "Pmenu" },
+		PmenuKindSel = { link = "PmenuSel" },
+		PmenuExtra = { fg = colors.gray1 },
+		PmenuExtraSel = { fg = colors.gray1, bg = colors.bg3, bold = true },
+		PmenuMatch = { fg = colors.fg, bold = true },
+		PmenuMatchSel = { bold = true },
+		PmenuThumb = { bg = colors.gray1 },
 		PreCondit = { fg = colors.blue },
 		PreProc = { fg = colors.blue },
 
-		Question = { fg = colors.green },
-		QuickFixLine = { fg = colors.orange2 },
+		Question = { fg = colors.blue },
+		QuickFixLine = { bg = colors.bg3, bold = true },
 
 		Repeat = { fg = colors.pink },
 
-		Search = { fg = colors.fg, bg = colors.gray1 },
-		CurSearch = { fg = colors.bg, bg = colors.orange2 },
-		SignColumn = { bg = colors.bg },
+		Search = { fg = colors.fg, bg = colors.bg3 },
+		CurSearch = { fg = colors.bg2, bg = colors.red },
+		SignColumn = { fg = colors.bg3, bg = colors.bg },
+		SignColumnSB = { fg = colors.bg3, bg = colors.bg2 },
 		Special = { fg = colors.gray3 },
 		SpecialChar = { fg = colors.yellow },
 		SpecialComment = { fg = colors.pink },
 		SpecialKey = { fg = colors.gray3, bold = true },
-		SpellBad = { fg = colors.red, underline = true },
-		SpellCap = { fg = colors.orange, underline = true },
-		SpellLocal = { fg = colors.green, underline = true },
-		SpellRare = { fg = colors.pink, underline = true },
+		SpellBad = { sp = colors.red, undercurl = true },
+		SpellCap = { sp = colors.yellow, undercurl = true },
+		SpellLocal = { sp = colors.blue, undercurl = true },
+		SpellRare = { sp = colors.green, undercurl = true },
 		Statement = { fg = colors.pink },
 		StatusLine = { fg = colors.gray2, bg = "NONE" },
 		StatusLineNC = { fg = colors.gray2, bg = colors.bg2 },
@@ -167,50 +189,57 @@ function M.setup(opts)
 		Tag = { fg = colors.gray3 },
 		TermCursor = { fg = colors.fg, bg = colors.gray3 },
 		TermCursorNC = { fg = colors.fg, bg = colors.gray3 },
-		Title = { fg = colors.gray3 },
+		Title = { fg = colors.blue, bold = true },
 		Todo = { fg = colors.yellow, bold = true },
 		Type = { fg = colors.blue, italic = config.italic_keywords == "italic" },
 		Typedef = { fg = colors.blue, italic = config.italic_keywords == "italic" },
 
-		Variable = { fg = colors.fg },
-		VertSplit = { fg = colors.gray2 },
-		WinSeparator = { fg = colors.gray1 },
-		Visual = { fg = "NONE", bg = colors.bg3, bold = true },
-		VisualNOS = { fg = colors.gray2, bg = colors.gray2 },
+		Variable = { fg = colors.blue3 },
+		VertSplit = { fg = colors.bg2 },
+		WinSeparator = { fg = colors.bg2 },
+		WinBar = { fg = colors.orange },
+		WinBarNC = { link = "WinBar" },
+		Visual = { bg = colors.bg3, bold = true },
+		VisualNOS = { bg = colors.bg3, bold = true },
 
 		WarningMsg = { fg = colors.orange2, bg = "NONE" },
-		Whitespace = { fg = colors.gray2 },
+		Whitespace = { fg = colors.bg3 },
 		WildMenu = { fg = colors.fg },
 		lCursor = { fg = colors.fg, bg = colors.gray3 },
 		YankHighlight = { fg = colors.bg, bg = colors.orange },
 
 		-- Markdown
-		markdownBold = { fg = colors.fg, bold = true },
+		markdownBold = { fg = colors.red, bold = true },
 		markdownCode = { fg = colors.orange },
 		markdownCodeBlock = { fg = colors.orange },
-		markdownUrl = { fg = colors.pink, underline = true },
+		markdownUrl = { fg = colors.blue, underline = true, italic = true },
 		markdownCodeError = { fg = colors.red2 },
-		markdownH1 = { fg = colors.fg },
-		markdownH2 = { fg = colors.fg },
-		markdownH3 = { fg = colors.fg },
-		markdownH4 = { fg = colors.fg },
-		markdownH5 = { fg = colors.fg },
-		markdownH6 = { fg = colors.fg },
+		markdownH1 = { fg = colors.red, bold = true },
+		markdownH2 = { fg = colors.orange2, bold = true },
+		markdownH3 = { fg = colors.yellow, bold = true },
+		markdownH4 = { fg = colors.green, bold = true },
+		markdownH5 = { fg = colors.blue, bold = true },
+		markdownH6 = { fg = colors.pink, bold = true },
 		markdownId = { fg = colors.pink },
-		markdownItalic = { fg = colors.fg, italic = true },
-		markdownLinkText = { fg = colors.fg },
-		markdownRule = { fg = colors.gray3 },
-		markdownListMarker = { fg = colors.red },
-		markdownHeadingDelimiter = { fg = colors.fg },
-		markdownHeadingRule = { fg = colors.gray3 },
+		markdownItalic = { fg = colors.red, italic = true },
+		markdownLinkText = { fg = colors.blue, underline = true },
+		markdownRule = { fg = colors.gray1 },
+		markdownListMarker = { fg = colors.blue2 },
+		markdownHeadingDelimiter = { fg = colors.orange2, bold = true },
+		markdownHeadingRule = { fg = colors.gray1 },
 		markdownUrlTitleDelimiter = { fg = colors.fg },
 		markdownCodeSpecial = { fg = colors.orange },
 		markdownCodeDelimiter = { fg = colors.green },
-		markdownBlockquote = { fg = colors.gray3 },
+		markdownBlockquote = { fg = colors.pink },
 		markdownIdDeclaration = { fg = colors.fg },
 		markdownIdDelimiter = { fg = colors.gray2 },
 		markdownLinkDelimiter = { fg = colors.gray2 },
-		markdownOrderedListMarker = { fg = colors.red },
+		markdownOrderedListMarker = { fg = colors.blue2 },
+		mkdCodeDelimiter = { fg = colors.fg, bg = colors.bg },
+		mkdCodeStart = { fg = colors.orange, bold = true },
+		mkdCodeEnd = { fg = colors.orange, bold = true },
+		htmlH1 = { fg = colors.pink, bold = true },
+		htmlH2 = { fg = colors.blue, bold = true },
 
 		-----------------------------------------
 		--   Plugin support
@@ -618,7 +647,7 @@ function M.setup(opts)
 		MiniJump2dSpotUnique = { fg = colors.blue2, bg = colors.bg, bold = true },
 
 		-- Mini.indentscope
-		MiniIndentscopeSymbol = { fg = colors.red },
+		MiniIndentscopeSymbol = { fg = colors.fg },
 
 		-- Mini.cursorword
 		MiniCursorword = { underline = true },
@@ -683,41 +712,56 @@ function M.setup(opts)
 		IndentBlanklineSpaceChar = { fg = colors.gray3 },
 		IndentBlanklineSpaceCharBlankline = { fg = colors.yellow },
 
-		-- LSP References (word highlights under cursor)
+		-- LSP UI
+		LspCodeLens = { fg = colors.gray1 },
+		LspCodeLensSeparator = { link = "LspCodeLens" },
+		LspInlayHint = { fg = colors.gray1, bg = colors.bg3 },
 		LspReferenceText = { underline = true },
 		LspReferenceRead = { underline = true },
 		LspReferenceWrite = { underline = true },
+		LspReferenceTarget = { link = "LspReferenceText" },
+		LspSignatureActiveParameter = { bg = colors.bg3, bold = true },
 
 		-- vim-illuminate
-		IlluminatedWordText = { underline = true },
-		IlluminatedWordRead = { underline = true },
-		IlluminatedWordWrite = { underline = true },
+		illuminatedWord = { bg = colors.bg3 },
+		IlluminatedWordText = { bg = colors.bg3 },
+		IlluminatedWordRead = { bg = colors.bg3 },
+		IlluminatedWordWrite = { bg = colors.bg3 },
+		illuminatedCurWord = { bg = colors.bg3 },
 
-		-- LSP Diagnostics
-		DiagnosticVirtualTextInfo = { fg = colors.yellow },
-		DiagnosticHint = { fg = colors.blue },
-		DiagnosticError = { fg = colors.red2 },
-		DiagnosticInfo = { fg = colors.yellow },
-		DiagnosticVirtualTextWarn = { fg = colors.orange2 },
-		DiagnosticWarn = { fg = colors.orange2 },
+		-- Diagnostics
+		DiagnosticError = { fg = colors.red2, italic = true },
+		DiagnosticWarn = { fg = colors.yellow, italic = true },
+		DiagnosticInfo = { fg = colors.blue2, italic = true },
+		DiagnosticHint = { fg = colors.blue2, italic = true },
+		DiagnosticOk = { fg = colors.green, italic = true },
 
 		DiagnosticFloatingError = { fg = colors.red2 },
-		DiagnosticFloatingHint = { fg = colors.blue },
-		DiagnosticFloatingInfo = { fg = colors.yellow },
-		DiagnosticFloatingWarn = { fg = colors.orange2 },
+		DiagnosticFloatingWarn = { fg = colors.yellow },
+		DiagnosticFloatingInfo = { fg = colors.blue2 },
+		DiagnosticFloatingHint = { fg = colors.blue2 },
+		DiagnosticFloatingOk = { fg = colors.green },
+
+		DiagnosticVirtualTextError = { fg = colors.red2, bg = colors.bg3, italic = true },
+		DiagnosticVirtualTextWarn = { fg = colors.yellow, bg = colors.bg3, italic = true },
+		DiagnosticVirtualTextInfo = { fg = colors.blue2, bg = colors.bg3, italic = true },
+		DiagnosticVirtualTextHint = { fg = colors.blue2, bg = colors.bg3, italic = true },
+		DiagnosticVirtualTextOk = { fg = colors.green, bg = colors.bg3, italic = true },
 
 		DiagnosticSignError = { fg = colors.red2, bg = colors.bg },
-		DiagnosticSignHint = { fg = colors.blue, bg = colors.bg },
-		DiagnosticSignInfo = { fg = colors.yellow, bg = colors.bg },
-		DiagnosticSignWarn = { fg = colors.orange2, bg = colors.bg },
+		DiagnosticSignWarn = { fg = colors.yellow, bg = colors.bg },
+		DiagnosticSignInfo = { fg = colors.blue2, bg = colors.bg },
+		DiagnosticSignHint = { fg = colors.blue2, bg = colors.bg },
+		DiagnosticSignOk = { fg = colors.green, bg = colors.bg },
 
-		DiagnosticUnderlineError = { underline = true },
-		DiagnosticUnderlineHint = { underline = true },
-		DiagnosticUnderlineInfo = { underline = true },
-		DiagnosticUnderlineWarn = { underline = true },
+		DiagnosticUnderlineError = { sp = colors.red2, undercurl = true },
+		DiagnosticUnderlineWarn = { sp = colors.yellow, undercurl = true },
+		DiagnosticUnderlineInfo = { sp = colors.blue2, undercurl = true },
+		DiagnosticUnderlineHint = { sp = colors.blue2, undercurl = true },
+		DiagnosticUnderlineOk = { sp = colors.green, undercurl = true },
 
-		DiagnosticVirtualTextError = { fg = colors.red2 },
-		DiagnosticVirtualTextHint = { fg = colors.gray2 },
+		DiagnosticUnnecessary = { link = "Comment" },
+		DiagnosticDeprecated = { sp = colors.red2, strikethrough = true },
 
 		-- NERDTree
 		Directory = { fg = colors.fg },
@@ -929,7 +973,7 @@ function M.setup(opts)
 		TSTypeQualifier = { fg = colors.red },
 		TSURI = { fg = colors.yellow, underline = true },
 		TSUnderline = { underline = true },
-		TSVariable = { fg = colors.fg, italic = config.italic_variables },
+		TSVariable = { fg = colors.blue3, italic = config.italic_variables },
 		TSVariableBuiltin = { fg = colors.red, italic = config.italic_variables },
 		TSDefine = { fg = colors.red },
 
@@ -944,7 +988,7 @@ function M.setup(opts)
 		["@constant"] = { fg = colors.orange },
 		["@constant.builtin"] = { fg = colors.orange2 },
 		["@constant.macro"] = { fg = colors.blue },
-		["@constructor"] = { fg = colors.fg },
+		["@constructor"] = { fg = colors.yellow },
 		["@emphasis"] = { italic = true },
 		["@error"] = { fg = colors.red2, bg = colors.bg, bold = true },
 		["@exception"] = { fg = colors.red },
@@ -952,15 +996,32 @@ function M.setup(opts)
 		["@float"] = { fg = colors.orange },
 		["@function"] = { fg = colors.blue, italic = config.italic_functions },
 		["@function.builtin"] = { fg = colors.orange2, italic = config.italic_functions },
+		["@function.call"] = { link = "Function" },
 		["@function.macro"] = { fg = colors.pink, italic = config.italic_functions },
-		["@include"] = { fg = colors.red },
+		["@function.method"] = { link = "Function" },
+		["@function.method.call"] = { link = "Function" },
+		["@include"] = { fg = colors.pink },
 		["@keyword"] = { fg = colors.pink, italic = config.italic_keywords == "italic" },
 		["@keyword.function"] = { fg = colors.pink, italic = config.italic_functions },
 		["@keyword.operator"] = { fg = colors.pink, italic = config.italic_keywords == "italic" },
 		["@keyword.return"] = { fg = colors.pink, italic = config.italic_keywords == "italic" },
-		["@label"] = { fg = colors.pink },
+		["@keyword.import"] = { link = "Include" },
+		["@keyword.export"] = { fg = colors.pink },
+		["@keyword.conditional"] = { link = "Conditional" },
+		["@keyword.conditional.ternary"] = { link = "Operator" },
+		["@keyword.repeat"] = { link = "Repeat" },
+		["@keyword.exception"] = { link = "Exception" },
+		["@keyword.debug"] = { link = "Exception" },
+		["@keyword.storage"] = { link = "Keyword" },
+		["@keyword.coroutine"] = { link = "Keyword" },
+		["@keyword.type"] = { link = "Keyword" },
+		["@keyword.modifier"] = { link = "Keyword" },
+		["@keyword.directive"] = { link = "PreProc" },
+		["@label"] = { fg = colors.blue2 },
 		["@method"] = { fg = colors.blue, italic = config.italic_functions },
-		["@namespace"] = { fg = colors.blue },
+		["@method.call"] = { link = "Function" },
+		["@module"] = { fg = colors.yellow, italic = true },
+		["@namespace"] = { fg = colors.yellow, italic = true },
 		["@none"] = { fg = colors.orange },
 		["@number"] = { fg = colors.orange },
 		["@operator"] = { fg = colors.blue },
@@ -972,24 +1033,229 @@ function M.setup(opts)
 		["@punctuation.special"] = { fg = colors.gray3 },
 		["@repeat"] = { fg = colors.pink, italic = config.italic_keywords == "italic" },
 		["@string"] = { fg = colors.green },
-		["@string.escape"] = { fg = colors.green },
-		["@string.regex"] = { fg = colors.yellow },
-		["@string.special"] = { fg = colors.yellow },
+		["@string.documentation"] = { fg = colors.blue2 },
+		["@string.escape"] = { fg = colors.pink },
+		["@string.regex"] = { fg = colors.pink },
+		["@string.regexp"] = { fg = colors.pink },
+		["@string.special"] = { fg = colors.pink },
+		["@string.special.path"] = { link = "Special" },
+		["@string.special.symbol"] = { fg = colors.orange },
+		["@string.special.url"] = { fg = colors.blue, underline = true, italic = true },
 		["@symbol"] = { fg = colors.fg },
-		["@tag"] = { fg = colors.red },
-		["@tag.delimiter"] = { fg = colors.gray3 },
+		["@tag"] = { fg = colors.blue },
+		["@tag.builtin"] = { fg = colors.blue },
+		["@tag.attribute"] = { fg = colors.yellow, italic = true },
+		["@tag.delimiter"] = { fg = colors.blue2 },
 		["@text"] = { fg = colors.fg },
-		["@text.strong"] = { fg = colors.yellow },
-		["@text.title"] = { fg = colors.fg, bold = true },
-		["@text.uri"] = { fg = colors.yellow, underline = true },
+		["@text.strong"] = { fg = colors.red, bold = true },
+		["@text.emphasis"] = { fg = colors.red, italic = true },
+		["@text.strike"] = { fg = colors.fg, strikethrough = true },
+		["@text.title"] = { fg = colors.blue, bold = true },
+		["@text.literal"] = { fg = colors.green },
+		["@text.reference"] = { fg = colors.pink },
+		["@text.uri"] = { fg = colors.blue, underline = true, italic = true },
 		["@text.underline"] = { underline = true },
+		["@text.todo"] = { fg = colors.bg, bg = colors.orange },
+		["@text.todo.checked"] = { fg = colors.green },
+		["@text.todo.unchecked"] = { fg = colors.gray1 },
+		["@text.note"] = { fg = colors.bg, bg = colors.blue },
+		["@text.warning"] = { fg = colors.bg, bg = colors.yellow },
+		["@text.danger"] = { fg = colors.bg, bg = colors.red },
+		["@text.math"] = { fg = colors.blue },
+		["@text.environment"] = { fg = colors.pink },
+		["@text.environment.name"] = { fg = colors.blue },
+		["@text.diff.add"] = { link = "diffAdded" },
+		["@text.diff.delete"] = { link = "diffRemoved" },
 		["@type"] = { fg = colors.blue },
 		["@type.builtin"] = { fg = colors.blue },
 		["@type.qualifier"] = { fg = colors.red },
-		["@variable"] = { fg = colors.fg, italic = config.italic_variables },
-		["@variable.member"] = { fg = colors.yellow, italic = config.italic_variables },
+		["@variable"] = { fg = colors.blue3, italic = config.italic_variables },
+		["@variable.member"] = { fg = colors.pink, italic = config.italic_variables },
 		["@variable.builtin"] = { fg = colors.red, italic = config.italic_variables },
 		["@variable.parameter"] = { fg = colors.orange, italic = config.italic_variables },
+
+		-- @markup (modern markdown/markup groups)
+		["@markup"] = { fg = colors.fg },
+		["@markup.strong"] = { fg = colors.red, bold = true },
+		["@markup.italic"] = { fg = colors.red, italic = true },
+		["@markup.strikethrough"] = { fg = colors.fg, strikethrough = true },
+		["@markup.underline"] = { underline = true },
+		["@markup.heading"] = { fg = colors.blue, bold = true },
+		["@markup.heading.1"] = { fg = colors.red, bold = true },
+		["@markup.heading.2"] = { fg = colors.orange2, bold = true },
+		["@markup.heading.3"] = { fg = colors.yellow, bold = true },
+		["@markup.heading.4"] = { fg = colors.green, bold = true },
+		["@markup.heading.5"] = { fg = colors.blue, bold = true },
+		["@markup.heading.6"] = { fg = colors.pink, bold = true },
+		["@markup.heading.markdown"] = { bold = true },
+		["@markup.heading.1.markdown"] = { fg = colors.red, bold = true },
+		["@markup.heading.2.markdown"] = { fg = colors.orange2, bold = true },
+		["@markup.heading.3.markdown"] = { fg = colors.yellow, bold = true },
+		["@markup.heading.4.markdown"] = { fg = colors.green, bold = true },
+		["@markup.heading.5.markdown"] = { fg = colors.blue, bold = true },
+		["@markup.heading.6.markdown"] = { fg = colors.pink, bold = true },
+		["@markup.link"] = { fg = colors.pink },
+		["@markup.link.label"] = { fg = colors.pink },
+		["@markup.link.url"] = { fg = colors.blue, underline = true, italic = true },
+		["@markup.raw"] = { fg = colors.green },
+		["@markup.math"] = { fg = colors.blue },
+		["@markup.environment"] = { fg = colors.pink },
+		["@markup.environment.name"] = { fg = colors.blue },
+		["@markup.list"] = { fg = colors.blue2 },
+		["@markup.list.checked"] = { fg = colors.green },
+		["@markup.list.unchecked"] = { fg = colors.gray1 },
+		["@markup.quote"] = { fg = colors.pink },
+
+		-- @comment variants
+		["@comment.documentation"] = { link = "Comment" },
+		["@comment.error"] = { fg = colors.bg, bg = colors.red },
+		["@comment.warning"] = { fg = colors.bg, bg = colors.yellow },
+		["@comment.note"] = { fg = colors.bg, bg = colors.blue },
+		["@comment.hint"] = { fg = colors.bg, bg = colors.blue },
+		["@comment.todo"] = { fg = colors.bg, bg = colors.orange },
+
+		-- @diff groups
+		["@diff.plus"] = { link = "diffAdded" },
+		["@diff.minus"] = { link = "diffRemoved" },
+		["@diff.delta"] = { link = "diffChanged" },
+
+		-- @attribute variants
+		["@attribute.builtin"] = { link = "Special" },
+
+		-----------------------------------------
+		--   Language-Specific Overrides
+		-----------------------------------------
+
+		-- Protocol Buffers (CRITICAL for type highlighting fix)
+		-- All types should be yellow for consistency (both primitive and custom)
+		["@type.proto"] = { fg = colors.yellow },
+		["@constructor.proto"] = { fg = colors.yellow },
+		["@property.proto"] = { fg = colors.fg },
+		["@variable.proto"] = { fg = colors.fg },
+		["@lsp.type.type.proto"] = { fg = colors.yellow }, -- LSP override for proto types
+		["@lsp.type.class.proto"] = { fg = colors.yellow }, -- Custom message types
+		["@lsp.type.enum.proto"] = { fg = colors.yellow }, -- Enum types
+
+		-- CSS/SCSS
+		["@keyword.directive.css"] = { link = "Keyword" },
+		["@number.css"] = { fg = colors.orange2 },
+		["@string.plain.css"] = { fg = colors.fg },
+		["@type.tag.css"] = { fg = colors.blue },
+		["@type.css"] = { fg = colors.pink },
+		["@property.css"] = { fg = colors.blue },
+		["@property.scss"] = { fg = colors.blue },
+		["@property.class.css"] = { fg = colors.yellow },
+		["@property.id.css"] = { fg = colors.yellow },
+
+		-- HTML
+		["@character.special.html"] = { fg = colors.red },
+		["@markup.link.label.html"] = { fg = colors.fg },
+		["@string.special.url.html"] = { fg = colors.green },
+
+		-- Python
+		["@constructor.python"] = { fg = colors.blue2 },
+
+		-- Lua
+		["@constructor.lua"] = { link = "@punctuation.bracket" },
+
+		-- Bash
+		["@variable.parameter.bash"] = { fg = colors.green },
+		["@function.builtin.bash"] = { fg = colors.red, italic = true },
+
+		-- Ruby
+		["@symbol.ruby"] = { fg = colors.orange },
+		["@string.special.symbol.ruby"] = { fg = colors.orange },
+
+		-- Java
+		["@constant.java"] = { fg = colors.blue2 },
+
+		-- C/C++
+		["@keyword.import.cpp"] = { fg = colors.yellow },
+		["@keyword.import.c"] = { fg = colors.yellow },
+
+		-- C#
+		["@attribute.c_sharp"] = { fg = colors.yellow },
+
+		-- PHP
+		["@method.call.php"] = { link = "Function" },
+		["@method.php"] = { link = "Function" },
+		["@function.method.call.php"] = { link = "Function" },
+		["@function.method.php"] = { link = "Function" },
+
+		-- YAML
+		["@label.yaml"] = { fg = colors.yellow },
+
+		-- Git
+		gitcommitSummary = { fg = colors.orange, italic = true },
+		["@comment.warning.gitcommit"] = { fg = colors.yellow },
+		["@string.special.path.gitignore"] = { fg = colors.fg },
+
+		-- Vimdoc
+		["@markup.heading.1.delimiter.vimdoc"] = { underdouble = true, fg = colors.bg, bg = colors.bg, sp = colors.fg },
+		["@markup.heading.2.delimiter.vimdoc"] = { underline = true, fg = colors.bg, bg = colors.bg, sp = colors.fg },
+
+		-----------------------------------------
+		--   Additional Plugin Support
+		-----------------------------------------
+
+		-- Health check
+		healthSuccess = { fg = colors.blue2 },
+		healthWarning = { fg = colors.yellow },
+		healthError = { fg = colors.red },
+
+		-- Debug
+		debugPC = { bg = colors.bg2 },
+		debugBreakpoint = { fg = colors.gray1, bg = colors.bg },
+
+		-- YankHighlight (already defined above, but ensuring it's correct)
+		-- YankHighlight = { fg = colors.bg, bg = colors.orange },
+
+		-- TreesitterContext
+		TreesitterContextBottom = { sp = colors.bg3, underline = true },
+		TreesitterContextLineNumber = { fg = colors.bg3, bg = colors.bg2 },
+
+		-- Rainbow Delimiters
+		RainbowDelimiterRed = { fg = colors.red },
+		RainbowDelimiterOrange = { fg = colors.orange2 },
+		RainbowDelimiterYellow = { fg = colors.yellow },
+		RainbowDelimiterGreen = { fg = colors.green },
+		RainbowDelimiterCyan = { fg = colors.blue2 },
+		RainbowDelimiterBlue = { fg = colors.blue },
+		RainbowDelimiterViolet = { fg = colors.pink },
+
+		-- Indent-Blankline (ibl)
+		IblIndent = { fg = colors.bg3 },
+		IblScope = { fg = colors.fg },
+
+		-----------------------------------------
+		--   LSP Semantic Tokens
+		-----------------------------------------
+		-- These override TreeSitter, so we need to be careful
+		-- Matching Catppuccin's color scheme: classes/types in yellow, methods in blue
+		["@lsp.type.class"] = { fg = colors.yellow }, -- Classes in yellow (like Catppuccin)
+		["@lsp.type.decorator"] = { fg = colors.yellow },
+		["@lsp.type.enum"] = { fg = colors.yellow }, -- Enums in yellow
+		["@lsp.type.enumMember"] = { fg = colors.orange },
+		["@lsp.type.field"] = { fg = colors.fg }, -- Field names should be fg color
+		["@lsp.type.function"] = { fg = colors.blue }, -- Functions in blue
+		["@lsp.type.interface"] = { fg = colors.yellow }, -- Interfaces in yellow
+		["@lsp.type.keyword"] = { fg = colors.pink, italic = true }, -- Keywords in pink
+		["@lsp.type.controlKeyword"] = { fg = colors.pink, italic = true }, -- Control keywords (try/catch/if/else) in pink
+		["@lsp.type.macro"] = {}, -- Use TreeSitter
+		["@lsp.type.method"] = { fg = colors.blue }, -- Methods in blue (like Catppuccin)
+		["@lsp.type.namespace"] = { fg = colors.yellow },
+		["@lsp.type.parameter"] = {}, -- Use TreeSitter
+		["@lsp.type.property"] = { fg = colors.fg }, -- Properties should be fg color too
+		["@lsp.type.struct"] = { fg = colors.yellow }, -- Structs in yellow
+		["@lsp.type.type"] = { fg = colors.yellow }, -- Type names in yellow (like Catppuccin)
+		["@lsp.type.typeParameter"] = { fg = colors.yellow },
+		["@lsp.type.variable"] = {}, -- Use TreeSitter (important - don't override!)
+		["@lsp.mod.readonly"] = {},
+		["@lsp.mod.constant"] = {},
+		["@lsp.mod.deprecated"] = { sp = colors.red2, strikethrough = true },
+		["@lsp.typemod.function.defaultLibrary"] = { fg = colors.orange2 },
+		["@lsp.typemod.function.builtin"] = { fg = colors.orange2 },
+		["@lsp.type.regexp"] = { link = "@string.regexp" },
 	}
 
 	-- Apply on_highlights callback if provided
