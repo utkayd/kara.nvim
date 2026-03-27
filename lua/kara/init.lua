@@ -136,7 +136,7 @@ function M.setup(opts)
 
 		NonText = { fg = colors.gray2 },
 		Normal = { fg = colors.fg, bg = config.transparent_background and "NONE" or colors.bg },
-		NormalFloat = { fg = colors.fg, bg = colors.bg2 },
+		NormalFloat = { fg = colors.fg, bg = "NONE" },
 		NormalNC = { fg = colors.fg, bg = config.transparent_background and "NONE" or colors.bg },
 		NormalSB = { fg = colors.fg, bg = colors.bg2 },
 		Number = { fg = colors.orange },
@@ -268,7 +268,7 @@ function M.setup(opts)
 		WhichKeySeperator = { fg = colors.red },
 		WhichKeyGroup = { fg = colors.pink },
 		WhichKeyDesc = { fg = colors.fg },
-		WhichKeyFloat = { bg = colors.bg2 },
+		WhichKeyFloat = { bg = "NONE" },
 
 		-- Cmp
 		CmpItemAbbrDeprecated = { fg = colors.gray1 },
@@ -295,7 +295,7 @@ function M.setup(opts)
 		-- Blink.cmp
 		BlinkCmpMenu = { fg = colors.gray14, bg = colors.bg2 },
 		BlinkCmpMenuBorder = { fg = colors.gray1, bg = colors.bg2 },
-		BlinkCmpMenuSelection = { bg = colors.bg2, bold = true },
+		BlinkCmpMenuSelection = { bg = colors.bg3, bold = true },
 		BlinkCmpScrollBarThumb = { bg = colors.gray2 },
 		BlinkCmpScrollBarGutter = { bg = colors.gray2 },
 
@@ -1226,6 +1226,59 @@ function M.setup(opts)
 		-- Indent-Blankline (ibl)
 		IblIndent = { fg = colors.bg3 },
 		IblScope = { fg = colors.fg },
+
+		-- Noice.nvim
+		NoiceCmdline = { fg = colors.fg, bg = "NONE" },
+		NoiceCmdlineIcon = { fg = colors.red },
+		NoiceCmdlineIconSearch = { fg = colors.yellow },
+		NoiceCmdlinePopup = { fg = colors.fg, bg = "NONE" },
+		NoiceCmdlinePopupBorder = { fg = colors.red, bg = "NONE" },
+		NoiceCmdlinePopupBorderSearch = { fg = colors.yellow, bg = "NONE" },
+		NoiceCmdlinePopupTitle = { fg = colors.gray3, bg = colors.bg2 },
+		NoiceCmdlinePrompt = { fg = colors.blue, bg = colors.bg2 },
+
+		NoiceConfirm = { fg = colors.fg, bg = colors.bg2 },
+		NoiceConfirmBorder = { fg = colors.blue, bg = colors.bg2 },
+
+		NoicePopup = { fg = colors.fg, bg = "NONE" },
+		NoicePopupBorder = { fg = colors.gray1, bg = "NONE" },
+		NoicePopupmenu = { fg = colors.fg, bg = colors.bg2 },
+		NoicePopupmenuBorder = { fg = colors.gray1, bg = colors.bg2 },
+		NoicePopupmenuMatch = { fg = colors.blue, bold = true },
+		NoicePopupmenuSelected = { bg = colors.bg3, bold = true },
+
+		NoiceScrollbar = { bg = colors.bg3 },
+		NoiceScrollbarThumb = { bg = colors.gray1 },
+
+		NoiceMini = { fg = colors.fg, bg = colors.bg2 },
+		NoiceVirtualText = { fg = colors.gray2 },
+
+		NoiceLspProgressClient = { fg = colors.blue },
+		NoiceLspProgressSpinner = { fg = colors.yellow },
+		NoiceLspProgressTitle = { fg = colors.gray3 },
+
+		NoiceHover = { fg = colors.fg, bg = "NONE" },
+		NoiceHoverBorder = { fg = colors.gray1, bg = "NONE" },
+		NoiceSignature = { fg = colors.fg, bg = "NONE" },
+		NoiceSignatureBorder = { fg = colors.gray1, bg = "NONE" },
+		NoiceSignatureActiveParameter = { fg = colors.yellow, bold = true },
+
+		NoiceFormatConfirm = { fg = colors.fg },
+		NoiceFormatConfirmDefault = { fg = colors.orange2, bold = true },
+		NoiceFormatDate = { fg = colors.gray2 },
+		NoiceFormatEvent = { fg = colors.gray2 },
+		NoiceFormatKind = { fg = colors.blue },
+		NoiceFormatLevelDebug = { fg = colors.gray2 },
+		NoiceFormatLevelError = { fg = colors.red2 },
+		NoiceFormatLevelInfo = { fg = colors.blue2 },
+		NoiceFormatLevelOff = { fg = colors.gray1 },
+		NoiceFormatLevelTrace = { fg = colors.gray2 },
+		NoiceFormatLevelWarn = { fg = colors.yellow },
+		NoiceFormatProgressDone = { fg = colors.green, bold = true },
+		NoiceFormatProgressTodo = { fg = colors.gray2 },
+		NoiceFormatTitle = { fg = colors.gray3, bold = true },
+
+		NoiceCursor = { fg = colors.bg, bg = colors.fg },
 
 		-----------------------------------------
 		--   LSP Semantic Tokens
